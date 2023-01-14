@@ -1,0 +1,79 @@
+body {
+  background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%),
+    url("../assets/img/about-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.god-container {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: 15vh 5vh 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  font-size: 1.5em;
+}
+
+.about-square {
+  text-align: center;
+  border: 20px solid #2279dc;
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 400px;
+  max-height: 400px;
+  color: white;
+}
+
+.about-square h2 {
+  font-weight: bold;
+  margin: 20px 0 40px;
+}
+
+.about-square p {
+  padding: 0 10px 10px;
+}
+
+.about-p p {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+  max-height: 400px;
+  color: white;
+}
+
+@media (max-width: 748px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 15vh 5vh 10vh;
+  }
+
+  .about-p p {
+    margin-top: 5vh;
+  }
+}
+
+@media (max-width: 440px) {
+  .about-square {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+  }
+
+  .about-square h2 {
+    margin: 3px 0 5px;
+  }
+
+  .about-square p {
+    font-size: 0.8em;
+  }
+}

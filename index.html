@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RyoEX</title>
+
+
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <link rel="stylesheet" href="./css/app.css" />
+    <script src="https://kit.fontawesome.com/a1a25483bb.js" crossorigin="anonymous"></script>
+
+
+
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
+    rel="stylesheet"
+    />
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JQUERY -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body onload="onLoad()">
+ 
+
+    <div class="main-container">
+
+         <!--Navbar-->
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top ">
+      <div class="container">
+          <a href="#"><img src="assets/logo.png" id="nav-logo"></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color:#fff; font-size:28px;"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="nav navbar ms-auto">
+            <li class="nav-item">
+              <a href="news.html" class="nav-link">News</a>
+            </li>
+            <li class="nav-item">
+              <a href="about.html" class="nav-link">About us</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Tools</a>
+            </li>
+            <li class="nav-item">
+              <a href="partners.html" class="nav-link">Our Partners</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <input type="radio" name="currency" id="check1" checked />
+    <input type="radio" name="currency" id="check2" />
+    <input type="radio" name="currency" id="check3" />
+  
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <div class="intro-header">
+        <div class="intro-top">The World's #1 Currency Exchange Site</div>
+        <div class="intro-bottom">
+          View exchange rates, convert any currency, view historical data, and
+          financial news
+        </div>
+      </div>
+      <div class="tools">
+        <h2 id="currency-h1">Currency Exchange Tools</h2>
+        <div class="top-content">
+          <label for="check1" id="label1" onclick="displayLoading()"
+            >Converter</label
+          >
+          <label for="check2" id="label2"
+            >Chart</label
+          >
+          <label for="check3" id="label3"
+            >Table</label
+          >
+        </div>
+        <div id="loading"></div>
+        <div class="sub-container">
+          <div class="sub converter">
+            <div class="form">
+              <label for="amount" class="currency-label">Amount</label>
+              <input type="text" id="amount" name="amount" class="amount"/><br />
+              
+              <div class="options-select">
+                <div class="from-from">
+                <div class="from-label">
+                  <label for="base-currency" class="currency-label">From</label>
+                </div>
+                <div class="from-form">
+                <select
+                name="base-currency"
+                id="base-currency"
+                class="currency from-select-currency1"
+              ></select></div>
+            </div>
+              <div class="swap-button-div">
+                <button class="swap-button1">Swap</button>
+              </div>
+              <div class="to-to">
+              <div class="to-label">
+                <label for="to-currency" class="currency-label">To</label>
+              </div>
+                <div class="to-form">
+                <select
+                name="to-currency"
+                id="to-currency"
+                class="currency to-select-currency1"></select>
+              </div>
+             </div>
+              </div>
+              <div class="result-button">
+              <div class="button-div"><button 
+              type="button" 
+              id="convert" class="button-form">CONVERT</button>
+            </div>
+            <div class="result-form">
+            <div class="value-here"></div>
+            </div>
+              </div>
+            </div>
+          </div>
+          <div class="sub timeseries">
+            <div class="form">
+              <div class="options-select">
+                <div class="from-from">
+                <div class="from-label">
+                  <label for="base-currency1" class="currency-label">From</label>
+                </div>
+                <div class="from-form">
+                <select
+                name="base-currency1"
+                id="base-currency1"
+                class="currency from-select-currency2"
+              ></select></div>
+            </div>
+            <div class="swap-button-div">
+              <button class="swap-button2">Swap</button>
+            </div>
+              <div class="to-to">
+              <div class="to-label">
+                <label for="to-currency1" class="currency-label">To</label>
+              </div>
+                <div class="to-form">
+                <select
+                name="to-currency1"
+                id="to-currency1"
+                class="currency to-select-currency2"></select>
+              </div>
+             </div>
+              </div>
+
+            <div id="graph"></div>
+            </div>
+          </div>
+          <div class="sub table">
+            <div class="table-form">
+            <div class="options-select">
+              <div class="from-from">
+              <div class="from-label">
+                <label for="base-currency2" class="currency-label">From</label>
+              </div>
+              <div class="from-form">
+              <select
+              name="base-currency2"
+              id="base-currency2"
+              class="currency from-select-currency3"
+            ></select></div>
+              </div>
+              <div class="swap-button-div">
+                <button class="swap-button3">Swap</button>
+              </div>
+            <div class="to-to">
+            <div class="to-label">
+              <label for="to-currency2" class="currency-label">To</label>
+            </div>
+              <div class="to-form">
+              <select
+              name="to-currency2"
+              id="to-currency2"
+              class="currency to-select-currency3"></select>
+            </div>
+           </div>
+            </div>
+            <div class="table-data">
+              <div class="table1">
+              <table id="table-data1">
+                <thead>
+                  <tr>
+                    <th>Base Currency</th>
+                    <th>Popular Currencies</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate0"></td>
+                </tr>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate1"></td>
+                </tr>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate2"></td>
+                </tr>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate3"></td>
+                </tr>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate4"></td>
+                </tr>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate5"></td>
+                </tr>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate6"></td>
+                </tr>
+                <tr>
+                  <td class="baserate"></td>
+                  <td id="rate7"></td>
+                </tr>
+              </table>
+              </div>
+              <div class="table2">
+              <table id="table-data2">
+                <thead>
+                  <tr>
+                    <th>Base Currency</th>
+                    <th>Converted Currency</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td id="t2rate1"></td>
+                  <td class="baserate2"></td>
+                </tr>
+                <tr>
+                  <td id="t2rate10"></td>
+                  <td class="baserate2"></td>
+                </tr>
+                <tr>
+                  <td id="t2rate50"></td>
+                  <td class="baserate2"></td>
+                </tr>
+                <tr>
+                  <td id="t2rate100"></td>
+                  <td class="baserate2"></td>
+                </tr>
+                <tr>
+                  <td id="t2rate200"></td>
+                  <td class="baserate2"></td>
+                </tr>
+                <tr>
+                  <td id="t2rate500"></td>
+                  <td class="baserate2"></td>
+                </tr>
+                <tr>
+                  <td id="t2rate1000"></td>
+                  <td class="baserate2"></td>
+                </tr>
+                <tr>
+                  <td id="t2rate10000"></td>
+                  <td class="baserate2"></td>
+                </tr>
+              </table>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="logo-div"><a href="#">
+        <img src="./assets/img/logo.png" alt="" class="footer-logo" /></a>
+      </div>
+      <div class="quick-links"><h3>Quick Links</h3></div>
+      <div class="subscribe"><h3>Subscribe to Newsletter</h3></div>
+      <div class="contacts">
+        <h2>+1-7635-547-12-97</h2>
+        <p>ryoexcc@gmail.com</p>
+      </div>
+      <div class="ql1 ql">
+        <a href="about.html" class="footer-link fl1">About Us</a>
+        <a href="#" class="footer-link">Tools</a>
+      </ul>
+    </div>
+    <div class="ql2 ql">
+      <a href="news.html" class="footer-link fl1">News</a>
+      <a href="partners.html" class="footer-link">Our Partners</a>
+    </div>
+      <div class="email-input">
+        <input type="email" name="newsletter" id="newsletter" />
+        <i class="fa-solid fa-arrow-right fa-3x"></i>
+      </div>
+      <div class="socials">
+        <a href="https://www.twitter.com" target="_blank">
+        <i class="fa-brands fa-twitter fa-2x"></i></a>
+        <a href="https:www.instagram.com" target="_blank">
+          <i class="fa-brands fa-instagram fa-2x"></i></a>
+          <a href="https:www.facebook.com" target="_blank">
+            <i class="fa-brands fa-facebook fa-2x"></i></a>
+      </div>
+      <div class="sitename">
+        <p>A Product of</p>
+        <img src="./assets/img/logo.png" alt="" class="sitename-logo">
+      </div>
+      <div class="copyrights">
+        <p>©2022 RyoEX Inc. / All rights reserved</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/classes.js"></script>
+  <script src="./js/main.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito/Nunito-ExtraBold.eot");
+  src: url("../assets/fonts/nunito/Nunito-ExtraBold?#iefix")
+      format("embedded-opentype"),
+    url("../assets/fonts/nunito/Nunito-ExtraBold.woff2") format("woff2"),
+    url("../assets/fonts/nunito/Nunito-ExtraBold.woff") format("woff"),
+    url("../assets/fonts/nunito/Nunito-ExtraBold.ttf") format("truetype"),
+    url("../assets/fonts/nunito/Nunito-ExtraBold.svg") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(10, 20, 110, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+main {
+  text-align: center;
+  margin-top: 30vh;
+  margin-bottom: 40vh;
+}
+
+main .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5vw;
+}
+
+main h1 {
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: white;
+  margin-bottom: 5vh;
+}
+
+.logo a h2,
+.logo a h1 {
+  text-decoration: none;
+  color: white;
+}
+
+.logo img {
+  width: 350px;
+  height: auto;
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.logo h2 {
+  font-family: "Nunito";
+  color: black;
+  font-size: 2.5em;
+}
+
+@media (max-width: 818px) {
+  main {
+    margin: 20vh 0 20vh;
+  }
+  main .logo {
+    flex-direction: column;
+  }
+  .logo a:nth-child(1) {
+    margin: 5vh;
+  }
+}
+
+@media (max-width: 360px) {
+  main {
+    margin: 20vh 0 20vh;
+  }
+
+  .logo img {
+    width: 275px;
+    height: auto;
+  }
+
+  .logo a h2 {
+    font-size: 1.9em;
+  }
+}
